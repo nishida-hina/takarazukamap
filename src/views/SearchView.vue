@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <button @click="Once_disp">ON/OFF</button>
     <div v-if="once_disp" >
         <p><img src="https://picsum.photos/id/237/400/300" alt=""></p>
@@ -1439,7 +1440,7 @@ M84.34,559.467h1.456v-0.887H84.34V559.467z M84.475,554.047h1.321v-0.843h-1.321V5
       
         </svg><input type="text" size="20" v-model="inputText" placeholder="ここにテキストを入力" /> </div>
     
-      <div class="container"  v-for="(item, index) in textData" v-bind:key="index">
+      <div class="container"  v-for="(item, index) in textData" v-bind:key="index" >
           <input :id="'tab_'+index" type="checkbox" name="accordion" class="trigger" >
           <label :for="'tab_'+index" class="tab_label" v-on:click="SearchAns(item.name)" align="left">{{ item.name }}</label>
           <div class="contents">
@@ -1455,7 +1456,17 @@ M84.34,559.467h1.456v-0.887H84.34V559.467z M84.475,554.047h1.321v-0.843h-1.321V5
             
           </div>
       </div>
-      
+
+  <button v-scroll-to="{ 
+          el: '#element',
+          onDone: onDone,
+          onCancel: onCancel
+      }">
+      Scroll callbacks
+  </button>
+  
+  <h1 id="element">Hi. I'm element</h1>
+
 
   </div>
 </template>
@@ -1532,6 +1543,7 @@ export default {
       ],
       profile: "",
       once_disp:false,
+      
     };
   },
   mounted() {
@@ -1567,6 +1579,7 @@ export default {
       } else {
         return false
       }
+      
     },
     SearchAns: function (name) {
       this.disp = !this.disp;
@@ -1576,6 +1589,7 @@ export default {
         return item.name === name;
       });
     },
+
     prefChange(pref) {
       for(let i = 0; i < this.prefColor.length; i++){
         // console.log([i])
@@ -1594,10 +1608,17 @@ export default {
         return item.name === pref
       })
       result.color = !result.color
-      this.inputText = pref
+      this.inputText = pref;
+      
+    onDone() {
+      alert('done')
     },
+    onCancel(e) {
+      alert('canceled')
+      console.log(e)
+    }
+    
   },
-
 }
 
 </script>
@@ -1728,5 +1749,8 @@ p{
 }
 svg{
     z-index: 0;
+}
+h1, button {
+  margin-bottom: 1000px;
 }
 </style>

@@ -28,7 +28,9 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  // history: createWebHistory(process.env.BASE_URL),
+  // historyはリンク先へ移動した後、また戻った時に同じ場所に移動する
 })
 
 export default router
