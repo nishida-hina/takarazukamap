@@ -13,11 +13,17 @@ const routes = [
   {
     path: '/about',
     name: 'about',
+    fullPath: "/#third_link",
+    query: {},
+    hash: "#third_link",
+    params: {},
+
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  },
+    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+},
+
   {
     path: '/search',
     name: 'search',
@@ -29,8 +35,6 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
-  // history: createWebHistory(process.env.BASE_URL),
-  // historyはリンク先へ移動した後、また戻った時に同じ場所に移動する
 })
 
 export default router

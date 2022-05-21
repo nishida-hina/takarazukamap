@@ -1455,14 +1455,14 @@ M84.34,559.467h1.456v-0.887H84.34V559.467z M84.475,554.047h1.321v-0.843h-1.321V5
             
           </div>
       </div>
-      <p>aaaa</p>
-
+ 
   </div>
 </template>
 
 <script>
 
 import datas from "../data_1.json";
+
 export default {
   data() {
     return {
@@ -1598,6 +1598,7 @@ export default {
       this.inputText = pref;
     
   },
+  
 }}
 
 </script>
@@ -1729,7 +1730,5 @@ p{
 svg{
     z-index: 0;
 }
-h1, button {
-  margin-bottom: 1000px;
-}
+
 </style>
