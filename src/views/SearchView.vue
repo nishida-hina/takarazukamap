@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <button @click="Once_disp">ON/OFF</button>
     <div v-if="once_disp" >
         <p><img src="https://picsum.photos/id/237/400/300" alt=""></p>
@@ -1456,22 +1455,10 @@ M84.34,559.467h1.456v-0.887H84.34V559.467z M84.475,554.047h1.321v-0.843h-1.321V5
             
           </div>
       </div>
-
-  <button v-scroll-to="{ 
-          el: '#element',
-          onDone: onDone,
-          onCancel: onCancel
-      }">
-      Scroll callbacks
-  </button>
-  
-  <h1 id="element">Hi. I'm element</h1>
-
+      <p>aaaa</p>
 
   </div>
 </template>
-
-
 
 <script>
 
@@ -1609,17 +1596,9 @@ export default {
       })
       result.color = !result.color
       this.inputText = pref;
-      
-    onDone() {
-      alert('done')
-    },
-    onCancel(e) {
-      alert('canceled')
-      console.log(e)
-    }
     
   },
-}
+}}
 
 </script>
 
