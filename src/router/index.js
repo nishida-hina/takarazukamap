@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,11 +14,6 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    fullPath: "/#third_link",
-    query: {},
-    hash: "#third_link",
-    params: {},
-
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -33,8 +29,15 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
+  // base: process.env.BASE_URL,
   routes,
+  scrollBehavior(to) {
+    if (to.hash) {
+      return { el: to.hash, behavior: 'smooth' };
+    } else {
+      return { top: 0, behavior: 'smooth' };
+    }
+  }
 })
 
 export default router

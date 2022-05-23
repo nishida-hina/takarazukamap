@@ -1438,11 +1438,11 @@ M84.34,559.467h1.456v-0.887H84.34V559.467z M84.475,554.047h1.321v-0.843h-1.321V5
       </g>
       
         </svg><input type="text" size="20" v-model="inputText" placeholder="ここにテキストを入力" /> </div>
-    
+    <div ref="testBlock">
       <div class="container"  v-for="(item, index) in textData" v-bind:key="index" >
           <input :id="'tab_'+index" type="checkbox" name="accordion" class="trigger" >
           <label :for="'tab_'+index" class="tab_label" v-on:click="SearchAns(item.name)" align="left">{{ item.name }}</label>
-          <div class="contents">
+          <div class="contents" >
             <div class="contents_02">
               <div class="contents_03">
             <h3 >{{ item.name }}</h3>
@@ -1455,7 +1455,7 @@ M84.34,559.467h1.456v-0.887H84.34V559.467z M84.475,554.047h1.321v-0.843h-1.321V5
             
           </div>
       </div>
- 
+    </div>
   </div>
 </template>
 
@@ -1577,14 +1577,11 @@ export default {
       });
     },
 
-    prefChange(pref) {
+    async prefChange(pref) {
       for(let i = 0; i < this.prefColor.length; i++){
         // console.log([i])
         this.prefColor[i].color = false;
-        
       }
-      
-      // ここに都道府県全てのデータ(prefColorの配列)をfalseに変換
       // ↓はfor文の全体
       //   this.prefColor[0].color = false;
       //   this.prefColor[1].color = false;
@@ -1596,10 +1593,18 @@ export default {
       })
       result.color = !result.color
       this.inputText = pref;
-    
-  },
-  
-}}
+      // ここまで がここに都道府県全てのデータ(prefColorの配列)をfalseに変換-------------
+
+      await this.$nextTick()    // DOMが更新されるまで待つ
+      this.scrollToAnchorPoint('testBlock')   // スクロール
+
+    },
+    scrollToAnchorPoint(refName) {
+      const el = this.$refs[refName]
+      el.scrollIntoView({ behavior: 'smooth'})
+    }
+  }
+}
 
 </script>
 
