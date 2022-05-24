@@ -4,7 +4,7 @@
     {"name":"望海風斗","class":"雪組","birthplace":"神奈川県"},
     {"name":"真風涼帆","class":"宙組","birthplace":"熊本県"},
     {"name":"柚香光","class":"花組","birthplace":"東京都","birthplace_2":"Tokyo"},
-    {"name":"月城かなと","class":"月組","birthplace":"東京都","birthplace_2":"Tokyo","img_src":"tate.jpg"},
+    {"name":"月城かなと","class":"月組","birthplace":"東京都","birthplace_2":"Tokyo","img_src":"tate.jpg","icon":"icon_snow_l.png","color":"deepskyblue"},
     {"name":"あああああ","class":"月組","birthplace":"東京都","birthplace_2":"Tokyo"},
     {"name":"いいいいい","class":"月組","birthplace":"東京都","birthplace_2":"Tokyo"},
     {"name":"うううう","class":"月組","birthplace":"東京都","birthplace_2":"Tokyo"}

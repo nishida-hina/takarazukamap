@@ -1,5 +1,6 @@
 <template>
   <div>
+    <a id="a01"></a>
     <button @click="Once_disp">ON/OFF</button>
     <div v-if="once_disp" >
         <p><img src="https://picsum.photos/id/237/400/300" alt=""></p>
@@ -1438,24 +1439,65 @@ M84.34,559.467h1.456v-0.887H84.34V559.467z M84.475,554.047h1.321v-0.843h-1.321V5
       </g>
       
         </svg><input type="text" size="20" v-model="inputText" placeholder="ここにテキストを入力" /> </div>
+    
+    
     <div ref="testBlock">
-      <div class="container"  v-for="(item, index) in textData" v-bind:key="index" >
+      <div  class="container"  v-for="(item, index) in textData" v-bind:key="index" >
           <input :id="'tab_'+index" type="checkbox" name="accordion" class="trigger" >
           <label :for="'tab_'+index" class="tab_label" v-on:click="SearchAns(item.name)" align="left">{{ item.name }}</label>
           <div class="contents" >
             <div class="contents_02">
-              <div class="contents_03">
-            <h3 >{{ item.name }}</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipi etur adipi rem delectetur adipi rem delectetur adipi rem delectetur adipi rem delectetur adipi rem delectvrem delectsed.</p>
-            <a href="https://www.google.com/">aaaaaa</a>
-            </div><!-- "contents_03" -->
-            <!-- V-ifがあることによって、画像がない人ok -->
-            <img v-if="item.img_src" :src="require('../assets/'+item.img_src)" alt="">
-            </div><!-- "contents_02" -->
+              
+                <!-- V-ifがあることによって、画像がない人ok -->
+                <img v-if="item.img_src" :src="require('../assets/'+item.img_src)" alt="" class="pic_pro">
+                <div class="contents_03"> 
+                <table>
+                <tbody> 
+                  <div class="name_icon">
+                  <h3>{{item.name}}</h3>
+                <img v-if="item.icon" :src="require('../assets/'+item.icon)" class="icon_size" alt="">
+                </div>
+                  <tr>
+                    <th>誕生日</th>
+                    <td>{{item.name}}</td>
+                </tr>
             
-          </div>
-      </div>
-    </div>
+                <tr>
+                    <th>出身地</th>
+                    <td>{{item.name}}</td>
+                </tr>
+            
+                <tr>
+                    <th>身長</th>
+                    <td>{{item.name}}</td>
+                </tr>
+            
+                <tr>
+                    <th>初舞台</th>
+                    <td>{{item.name}}</td>
+                </tr>
+            
+                <tr>
+                    <th>好きだった役</th>
+                    <td>{{item.name}}</td>
+                </tr>
+            
+                <tr>
+                    <th>愛称</th>
+                    <td>{{item.name}}</td>
+                </tr>
+            
+        </tbody>
+                </table>
+            </div><!-- "contents_03"  アコーディオンの個別の中の内容-->
+            
+            </div><!-- "contents_02" アコーディオンの個別 -->
+            
+          </div><!-- "contents" アコーディオン全体のcss用 -->
+      </div><!-- container  アコーディオン全体を囲む  -->
+    </div><!-- testBlock スクロール用  -->
+    <a href="" class="btn_anim">
+    <svg class="topscl" xmlns="http://www.w3.org/2000/svg" width="5%"  viewBox="0 0 200 200"><path d="M742.764,3639.5a100,100,0,1,0,100-100A100,100,0,0,0,742.764,3639.5Zm148.148,20.462h-96.3l48.148-63.147Z" transform="translate(-742.764 -3539.499)"/></svg></a>
   </div>
 </template>
 
@@ -1596,8 +1638,8 @@ export default {
       // ここまで がここに都道府県全てのデータ(prefColorの配列)をfalseに変換-------------
 
       await this.$nextTick()    // DOMが更新されるまで待つ
-      this.scrollToAnchorPoint('testBlock')   // スクロール
-
+      this.scrollToAnchorPoint('testBlock') // スクロール
+      this.scrollToAnchorPoint('testBlock')
     },
     scrollToAnchorPoint(refName) {
       const el = this.$refs[refName]
@@ -1609,6 +1651,7 @@ export default {
 </script>
 
 <style scoped>
+
 #mapsize {
   max-width: 2000px;
   fill: #0d5c80;
@@ -1621,12 +1664,33 @@ export default {
   margin-bottom: 2em;
 }
 
+.buttoncolor {
+    fill: green;
+}
 
+.input_text{
+  position: relative;
+  text-align: left;
+  z-index: 10;
+}
+.input_text input {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+}
+svg{
+    z-index: 0;
+}
+
+.topscl{
+  float:right;
+  margin:20px;
+  fill: #52c2d0;
+}
 
 /*=========================
-  accordion
+  accordion用のlabe
 =========================*/
-#accordion {}
 
 .tab_label {
   display: block;
@@ -1665,75 +1729,94 @@ export default {
 .trigger {
   display: none;
 }
+
+
 /*=========================
-  Layout
+  accordion用の中身
 =========================*/
+
 .container {
-  width: 80%;
-  margin: 0 auto;
+  min-width: 50%;
+  overflow-y: scroll;
+  justify-content: center;
+  margin: 0 ;
   padding: 0 4%;
 }
-/*スマホ大、横向き〜 */
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
-
-/*PC 〜 */
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
 
 
-.buttoncolor {
-    fill: green;
-}
-
+/*<アコーディオン(個々)を囲む箱>*/
 .contents_02{
   display: flex;justify-content:space-between;
+  /* overflow: hidden; */
+}
+.contents_02 .pic_pro {
+  max-width: 30%;
+  flex: 1 0 700px;
+  height: auto;
+  object-fit: cover;
+  flex: 1; /**対象となっている２つにflex:1を振ると、１：１になる(またはwith50%をふる) */
 }
 
 .contents_03{
-  text-align: left;
-  position: relative;/*←絶対位置*/
-    bottom: 0; /*下に固定*/
-}
-.contents_03 a {
-  text-decoration: none;
-  display: flex;justify-content:center;
-  vertical-align: sub;
-}
-h3{
-  display: inline-block;
-  margin: 0;
-}
-img {
-  max-width: 50%;
-  min-width: 30%;
-  height: 400px;
-  /* height:auto; */
-  object-fit: cover;
-  
+  flex: 1;
+  margin-left: 40px;
 }
 
-p{
-  display: inline-block;
+table{
+  width: 100%;
+  /* border-collapse: collapse; */
 }
-.input_text{
+
+table tr{
+  border-bottom: solid 2px white;
+}
+
+table tr:last-child{
+  border-bottom: none;
+}
+
+table th{
   position: relative;
   text-align: left;
-  z-index: 10;
+  width: 30%;
+  background-color: #52c2d0;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
 }
-.input_text input {
+
+table th:after{
+  display: block;
+  content: "";
+  width: 0px;
+  height: 0px;
   position: absolute;
-  top: 20%;
-  left: 20%;
+  top:calc(50% - 10px);
+  right:-10px;
+  border-left: 10px solid #52c2d0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
 }
-svg{
-    z-index: 0;
+
+table td{
+  text-align: left;
+  width: 100%;
+  text-align: center;
+  background-color: #eee;
+  padding: 10px 0;
 }
+
+
+.name_icon{
+  display: flex; 
+}
+
+.icon_size{
+  width: 50px;
+  height:50px;
+  margin-left: 10px;
+}
+
+
 
 </style>
