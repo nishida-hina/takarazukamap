@@ -1,11 +1,19 @@
 [
-  
-    {"name":"明日海りお","class":"花組","birthplace":"静岡県"},
-    {"name":"望海風斗","class":"雪組","birthplace":"神奈川県"},
-    {"name":"真風涼帆","class":"宙組","birthplace":"熊本県"},
-    {"name":"柚香光","class":"花組","birthplace":"東京都","birthplace_2":"Tokyo"},
-    {"name":"月城かなと","class":"月組","birthplace":"東京都","birthplace_2":"Tokyo","img_src":"tate.jpg","icon":"icon_snow_l.png","color":"deepskyblue"},
-    {"name":"あああああ","class":"月組","birthplace":"東京都","birthplace_2":"Tokyo"},
-    {"name":"いいいいい","class":"月組","birthplace":"東京都","birthplace_2":"Tokyo"},
-    {"name":"うううう","class":"月組","birthplace":"東京都","birthplace_2":"Tokyo"}
+
+    {"name":"真風 涼帆","class":"宙組","birthplace":"熊本県","birthday":"7月18日","height":"175cm","first":"2006年3月「NEVER SAY GOODBYE」",
+        "like":"「エリザベート」のフランツ・ヨーゼフ、「オーシャンズ11」のダニー・オーシャン、「FLYING SAPA」のオバク","mini_name":"ゆりか、すずほ",
+        "img_src":"tate.jpg","icon":"icon_cosmos_l.png","color":"#E4C1DB"},
+
+    {"name":"彩風 咲奈","class":"雪組","birthplace":"愛媛県","birthday":"2月13日","height":"173cm","first":"2007年3月「シークレット・ハンター」",
+        "like":"「るろうに剣心」の斎藤一、「ドン・ジュアン」のドン・カルロ、「ファントム」のジェラルド・キャリエール","mini_name":"さき",
+        "img_src":"tate.jpg","icon":"icon_snow_l.png","color":"#A3D5C0"},
+
+    {"name":"礼 真琴","class":"星組","birthplace":"東京都","birthday":"12月2日","height":"170cm","first":"2009年4月「Amour それは…」",
+        "like":"今迄いただいた役全てが宝物ですが、阿弖流為と丹礼真は特に心を動かされました","mini_name":"まこっつあん、こと、こっちゃん",
+        "img_src":"tate.jpg","icon":"icon_star_l.png","color":"#59C2E1"},
+    {"name":"柚香 光","class":"花組","birthplace":"東京都","birthday":"3月5日","height":"171cm","first":"2009年4月「Amour それは…」",
+        "like":"「オーシャンズ11」新人公演のテリー・ベネディクト、「ノクターン」のウラジミール、「エリザベート」のルドルフと新人公演のトート、「はいからさんが通る」の伊集院忍、「ポーの一族」のアラン・トワイライト、「花より男子」の全て、「DANCE OLYMPIA」のスパニッシュの男S",
+        "mini_name":"れい","img_src":"tate.jpg","icon":"icon_flower_l.png","color":"#ED8599"},
+    {"name":"月城 かなと","class":"月組","birthplace":"東京都","birthday":"12月31日","height":"172cm","first":"2009年4月「Amour それは…」",
+        "like":"今迄いただいた役全て","mini_name":"れいこ","img_src":"tate.jpg","icon":"to_pc_moon.png","color":"#eed551"}
 ]

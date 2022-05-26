@@ -1,12 +1,11 @@
 <template>
   <div>
     <a id="a01"></a>
-    <button @click="Once_disp">ON/OFF</button>
+    <!-- <button @click="Once_disp">ON/OFF</button>
     <div v-if="once_disp" >
         <p><img src="https://picsum.photos/id/237/400/300" alt=""></p>
-    </div>
+    </div> -->
     <div class="input_text">
-    
         <svg data-v-4cebd208="" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 841.89 595.28" enable-background="new 0 0 841.89 595.28" xml:space="preserve" id="mapsize">
       
@@ -1438,12 +1437,14 @@ M84.34,559.467h1.456v-0.887H84.34V559.467z M84.475,554.047h1.321v-0.843h-1.321V5
         </g>
       </g>
       
-        </svg><input type="text" size="20" v-model="inputText" placeholder="ここにテキストを入力" /> </div>
+        </svg><input type="text" size="20" v-model="inputText" placeholder="ここにテキストを入力" />
+    </div><!-- input_text  -->
     
     
     <div ref="testBlock">
       <div  class="container"  v-for="(item, index) in textData" v-bind:key="index" >
-          <input :id="'tab_'+index" type="checkbox" name="accordion" class="trigger" >
+
+          <input :id="'tab_'+index" type="checkbox" name="accordion" class="trigger"  @click="scrollToAnchorPoint_02('testBlock_02')">
           <label :for="'tab_'+index" class="tab_label" v-on:click="SearchAns(item.name)" align="left">{{ item.name }}</label>
           <div class="contents" >
             <div class="contents_02">
@@ -1458,34 +1459,34 @@ M84.34,559.467h1.456v-0.887H84.34V559.467z M84.475,554.047h1.321v-0.843h-1.321V5
                 <img v-if="item.icon" :src="require('../assets/'+item.icon)" class="icon_size" alt="">
                 </div>
                   <tr>
-                    <th>誕生日</th>
-                    <td>{{item.name}}</td>
+                    <th :style="{backgroundColor: item.color}">誕生日</th>
+                    <td>{{item.birthday}}</td>
+                </tr>
+                <tr>
+                    <th :style="{backgroundColor: item.color}">出身地</th>
+                    <td>{{item.birthplace}}</td>
                 </tr>
             
                 <tr>
-                    <th>出身地</th>
-                    <td>{{item.name}}</td>
+                    <th :style="{backgroundColor: item.color}">身長</th>
+                    <td>{{item.height}}</td>
                 </tr>
             
                 <tr>
-                    <th>身長</th>
-                    <td>{{item.name}}</td>
+                    <th :style="{backgroundColor: item.color}">初舞台</th>
+                    <td>{{item.first}}</td>
                 </tr>
             
                 <tr>
-                    <th>初舞台</th>
-                    <td>{{item.name}}</td>
+                    <th :style="{backgroundColor: item.color}">好きだった役</th>
+                    <td>{{item.like}}</td>
                 </tr>
             
                 <tr>
-                    <th>好きだった役</th>
-                    <td>{{item.name}}</td>
+                    <th :style="{backgroundColor: item.color}">愛称</th>
+                    <td>{{item.mini_name}}</td>
                 </tr>
-            
-                <tr>
-                    <th>愛称</th>
-                    <td>{{item.name}}</td>
-                </tr>
+                
             
         </tbody>
                 </table>
@@ -1494,10 +1495,14 @@ M84.34,559.467h1.456v-0.887H84.34V559.467z M84.475,554.047h1.321v-0.843h-1.321V5
             </div><!-- "contents_02" アコーディオンの個別 -->
             
           </div><!-- "contents" アコーディオン全体のcss用 -->
+
       </div><!-- container  アコーディオン全体を囲む  -->
-    </div><!-- testBlock スクロール用  -->
-    <a href="" class="btn_anim">
+      
+    </div><!-- testBlock  -->
+    <a href="#a01" class="btn_anim">
     <svg class="topscl" xmlns="http://www.w3.org/2000/svg" width="5%"  viewBox="0 0 200 200"><path d="M742.764,3639.5a100,100,0,1,0,100-100A100,100,0,0,0,742.764,3639.5Zm148.148,20.462h-96.3l48.148-63.147Z" transform="translate(-742.764 -3539.499)"/></svg></a>
+  <div ref="testBlock_02">
+</div>
   </div>
 </template>
 
@@ -1572,7 +1577,6 @@ export default {
       ],
       profile: "",
       once_disp:false,
-      
     };
   },
   mounted() {
@@ -1594,6 +1598,7 @@ export default {
         });
       }
     },
+ 
   },
   methods: {
     Once_disp: function(){
@@ -1636,13 +1641,16 @@ export default {
       result.color = !result.color
       this.inputText = pref;
       // ここまで がここに都道府県全てのデータ(prefColorの配列)をfalseに変換-------------
-
       await this.$nextTick()    // DOMが更新されるまで待つ
       this.scrollToAnchorPoint('testBlock') // スクロール
-      this.scrollToAnchorPoint('testBlock')
+      
     },
-    scrollToAnchorPoint(refName) {
-      const el = this.$refs[refName]
+    scrollToAnchorPoint(testBlock) {
+      const el = this.$refs[testBlock]
+      el.scrollIntoView({ behavior: 'smooth'})
+    },
+    scrollToAnchorPoint_02(testBlock_02) {
+      const el = this.$refs[testBlock_02]
       el.scrollIntoView({ behavior: 'smooth'})
     }
   }
@@ -1665,7 +1673,7 @@ export default {
 }
 
 .buttoncolor {
-    fill: green;
+    fill: deepskyblue;
 }
 
 .input_text{
@@ -1685,7 +1693,7 @@ svg{
 .topscl{
   float:right;
   margin:20px;
-  fill: #52c2d0;
+  fill: deepskyblue;
 }
 
 /*=========================
@@ -1700,8 +1708,14 @@ svg{
   border: solid 1px rgba(237, 169, 169, 0.2);
   color: #FFF;
 }
+
 .tab_label::before {
-  content: '▼';
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent ;
+  border-top: 10px solid white;
   margin-right: 0.2em;
   display: inline-block;
   transform: rotate(-90deg);
@@ -1779,10 +1793,9 @@ table th{
   position: relative;
   text-align: left;
   width: 30%;
-  background-color: #52c2d0;
   color: white;
   text-align: center;
-  padding: 10px 0;
+  padding: 10px 10px;
 }
 
 table th:after{
@@ -1793,7 +1806,7 @@ table th:after{
   position: absolute;
   top:calc(50% - 10px);
   right:-10px;
-  border-left: 10px solid #52c2d0;
+  
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
 }
@@ -1803,7 +1816,7 @@ table td{
   width: 100%;
   text-align: center;
   background-color: #eee;
-  padding: 10px 0;
+  padding: 10px 20px;
 }
 
 
@@ -1816,7 +1829,6 @@ table td{
   height:50px;
   margin-left: 10px;
 }
-
 
 
 </style>
