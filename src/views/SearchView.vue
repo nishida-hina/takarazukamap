@@ -1845,8 +1845,8 @@ table td{
     max-width: 750px;
   }
   .contents_02 .pic_pro {
-    max-width: 90%;
-    height: auto;
+    max-width: 50%;
+    height: 50px;
     object-fit: cover;
 
   }
