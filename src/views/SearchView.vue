@@ -1452,7 +1452,7 @@ M84.34,559.467h1.456v-0.887H84.34V559.467z M84.475,554.047h1.321v-0.843h-1.321V5
                 <!-- V-ifがあることによって、画像がない人ok -->
                 <img v-if="item.img_src" :src="require('../assets/'+item.img_src)" alt="" class="pic_pro">
                 <div class="contents_03"> 
-                <table>
+                <table class="table_block">
                 <tbody> 
                   <div class="name_icon">
                   <h3>{{item.name}}</h3>
@@ -1500,7 +1500,7 @@ M84.34,559.467h1.456v-0.887H84.34V559.467z M84.475,554.047h1.321v-0.843h-1.321V5
       
     </div><!-- testBlock  -->
     <a href="#a01" class="btn_anim">
-    <svg class="topscl" xmlns="http://www.w3.org/2000/svg" width="5%"  viewBox="0 0 200 200"><path d="M742.764,3639.5a100,100,0,1,0,100-100A100,100,0,0,0,742.764,3639.5Zm148.148,20.462h-96.3l48.148-63.147Z" transform="translate(-742.764 -3539.499)"/></svg></a>
+    <svg class="topscl" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 200 200"><path d="M742.764,3639.5a100,100,0,1,0,100-100A100,100,0,0,0,742.764,3639.5Zm148.148,20.462h-96.3l48.148-63.147Z" transform="translate(-742.764 -3539.499)"/></svg></a>
   <div ref="testBlock_02">
 </div>
   </div>
@@ -1694,6 +1694,7 @@ svg{
   float:right;
   margin:20px;
   fill: deepskyblue;
+  width:5%;
 }
 
 /*=========================
@@ -1778,7 +1779,7 @@ svg{
 
 table{
   width: 100%;
-  /* border-collapse: collapse; */
+  border-collapse: collapse;
 }
 
 table tr{
@@ -1812,7 +1813,7 @@ table th:after{
 }
 
 table td{
-  text-align: left;
+  /* text-align: left; */
   width: 100%;
   text-align: center;
   background-color: #eee;
@@ -1830,5 +1831,74 @@ table td{
   margin-left: 10px;
 }
 
+/*=========================
+  スマホ大 or 横向き〜
+=========================*/
 
+@media (max-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+  .contents_02{
+    flex-direction: column;
+    align-items: center;
+    max-width: 750px;
+  }
+  .contents_02 .pic_pro {
+    max-width: 90%;
+    height: auto;
+    object-fit: cover;
+
+  }
+  .topscl{ /**上いくぼたん */
+    float:right;
+    margin:10px;
+    width:10%;
+  }
+h3{
+  margin: none;
+}
+.name_icon{
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 8em
+}
+
+.icon_size{
+  width: 50px;
+  height:50px;
+  margin-left: 10px;
+}
+
+.table_block  th{
+  display: block;
+}
+.table_block  td{
+  display: block;
+}
+.table_block  tr{
+  display: block;
+}
+.contents_03{
+  margin: 0;
+}
+.contents td{
+  width: 100%;
+}
+table td{
+  width: 100%;
+	box-sizing:border-box;
+}
+
+table th{
+  padding: 5px 5px;
+  width: 100%;
+  position: relative;
+  text-align: left;
+  color: white;
+  text-align: center;
+  box-sizing:border-box;
+}
+}
 </style>
