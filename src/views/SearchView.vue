@@ -1449,8 +1449,12 @@ M84.34,559.467h1.456v-0.887H84.34V559.467z M84.475,554.047h1.321v-0.843h-1.321V5
           <div class="contents" >
             <div class="contents_02">
               
+
+              <div class="jast_01">
                 <!-- V-ifがあることによって、画像がない人ok -->
-                <img v-if="item.img_src" :src="require('../assets/'+item.img_src)" alt="" class="pic_pro">
+                <img v-if="item.img_src" :src="require('../assets/'+item.img_src)" alt="" class="pic_pro"></div>
+
+
                 <div class="contents_03"> 
                 <table class="table_block">
                 <tbody> 
@@ -1764,17 +1768,24 @@ svg{
   display: flex;justify-content:space-between;
   /* overflow: hidden; */
 }
-.contents_02 .pic_pro {
+.jast_01 {
   max-width: 30%;
   flex: 1 0 700px;
   height: auto;
   object-fit: cover;
   flex: 1; /**対象となっている２つにflex:1を振ると、１：１になる(またはwith50%をふる) */
 }
+.jast_01 img {
+  width: 100%;
+  height: auto;
+}
 
 .contents_03{
   flex: 1;
   margin-left: 40px;
+  display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 table{
@@ -1839,7 +1850,7 @@ table td{
   .container {
     max-width: 540px;
   }
- 
+
   .contents_02{
     flex-direction: column;
     align-items: center;
@@ -1848,7 +1859,7 @@ table td{
 
   .contents_02 .pic_pro {
     max-width: 50%;
-    object-fit: cover;
+    height: 50%;
 
   }
   .topscl{ /**上いくぼたん */
