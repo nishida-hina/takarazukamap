@@ -1839,14 +1839,15 @@ table td{
   .container {
     max-width: 540px;
   }
+ 
   .contents_02{
     flex-direction: column;
     align-items: center;
     max-width: 750px;
   }
+
   .contents_02 .pic_pro {
     max-width: 50%;
-    height: 50px;
     object-fit: cover;
 
   }
