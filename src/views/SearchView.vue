@@ -1448,9 +1448,9 @@ M84.34,559.467h1.456v-0.887H84.34V559.467z M84.475,554.047h1.321v-0.843h-1.321V5
           <label :for="'tab_'+index" class="tab_label" v-on:click="SearchAns(item.name)" align="left">{{ item.name }}</label>
           <div class="contents" >
             <div class="contents_02">
-              
+              <div class="object-fit_01">
                 <!-- V-ifがあることによって、画像がない人ok -->
-                <img v-if="item.img_src" :src="require('../assets/'+item.img_src)" alt="" class="pic_pro">
+                <img v-if="item.img_src" :src="require('../assets/'+item.img_src)" alt="" class="pic_pro"></div>
                 <div class="contents_03"> 
                 <table class="table_block">
                 <tbody> 
@@ -1598,7 +1598,6 @@ export default {
         });
       }
     },
- 
   },
   methods: {
     Once_disp: function(){
@@ -1844,11 +1843,13 @@ table td{
     align-items: center;
     max-width: 750px;
   }
+  .object-fit_01{
+    height: 300px;
+    
+  }
   .contents_02 .pic_pro {
-    max-width: 50%;
-    height: 50px;
     object-fit: cover;
-
+    width: auto;
   }
   .topscl{ /**上いくぼたん */
     float:right;
