@@ -1856,11 +1856,13 @@ table td{
     align-items: center;
     max-width: 750px;
   }
-
-  .contents_02 .pic_pro {
-    max-width: 50%;
-    height: 50%;
-
+  .jast_01{
+  max-width: 90%;
+  
+}
+.pic_pro {
+    height: 120%;
+    object-fit: cover;
   }
   .topscl{ /**上いくぼたん */
     float:right;
@@ -1912,5 +1914,6 @@ table th{
   text-align: center;
   box-sizing:border-box;
 }
+
 }
 </style>
